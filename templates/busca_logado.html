@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tucano Trabalhos - Busca de Vagas</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/busca.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/rodape.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/painelnotificacoes.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header home-header">
+    <div class="logo">
+        <a href="{{ url_for('home_') }}">
+            <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano">
+        </a>
+    </div>
+    <div class="header-icons">
+      <a href="{{ url_for('notificacoes') }}">
+        <button id="notificacoes-btn" class="icon-bell-btn">
+            <img src="{{ url_for('static', filename='IMG/bell-icon.png') }}" alt="Notificações" class="icon-bell">
+        </button>
+    </a>    
+        <!-- Envolvendo o ícone do perfil com a tag <a> para redirecionar -->
+        <a href="{{ url_for('perfil') }}">
+            <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+        </a>
+    </div>
+  </header>
+ 
+
+  <section class="search-advanced">
+    <div class="search-field">
+      <input type="text" placeholder="Buscar vagas por palavra-chave">
+      <button><img src="{{ url_for('static', filename='IMG/search-icon.png') }}" alt="Buscar"></button>
+    </div>
+    <div class="search-field">
+      <input type="text" placeholder="Onde quero trabalhar">
+      <button><img src="{{ url_for('static', filename='IMG/search-icon.png') }}" alt="Buscar"></button>
+    </div>
+  </section>
+
+  <main>
+    <!-- Seção de Filtros -->
+    <section class="filters">
+      <div class="filter-group">
+        <h4>Área de atuação</h4>
+        <label><input type="checkbox"> Garçom</label>
+        <label><input type="checkbox"> Serviços de limpeza</label>
+        <label><input type="checkbox"> Construção civil</label>
+        <label><input type="checkbox"> Vendedor</label>
+        <label><input type="checkbox"> Motorista</label>
+        <label><input type="checkbox"> Eventos</label>
+        <label><input type="checkbox"> Serviços de limpeza</label>
+        <label><input type="checkbox"> Tecnologia</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Escolaridade</h4>
+        <label><input type="checkbox"> Ensino Fundamental</label>
+        <label><input type="checkbox"> Ensino Médio</label>
+        <label><input type="checkbox"> Graduação</label>
+        <label><input type="checkbox"> Pós Graduação</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Duração</h4>
+        <label><input type="checkbox"> 1 Dia</label>
+        <label><input type="checkbox"> +2 Dias</label>
+        <label><input type="checkbox"> Feriado</label>
+        <label><input type="checkbox"> Fim de semana</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Horário</h4>
+        <label><input type="checkbox"> Manhã</label>
+        <label><input type="checkbox"> Tarde</label>
+        <label><input type="checkbox"> Noite</label>
+        <label><input type="checkbox"> Madrugada</label>
+      </div>
+    </section>
+
+    <!-- Seção de Vagas Disponíveis -->
+    <section class="job-listings">
+      <h2>Vagas Disponíveis</h2>
+      
+      {% for oportunidade in oportunidades %}
+      <div class="job-card" id="vaga-{{ oportunidade.oportunidade_id }}">
+        <a href="{{ url_for('vaga_logado', oportunidade_id=oportunidade.oportunidade_id) }}" class="job-link">
+          <h3>{{ oportunidade.titulo }}</h3>
+          <p>{{ oportunidade.data_inicio.strftime('%d/%m/%Y') }} - {{ oportunidade.data_fim.strftime('%d/%m/%Y') }}</p>
+          <p>{{ oportunidade.descricao }}</p>
+          <p><strong>Salário:</strong> R$ {{ oportunidade.valor }}</p>
+          <p><strong>Local:</strong> {{ oportunidade.local }}</p>
+          <p><strong>Categoria:</strong> {{ oportunidade.categoria }}</p>
+          <p><strong>Horário:</strong> {{ oportunidade.horario_inicio.strftime('%H:%M') }} - {{ oportunidade.horario_fim.strftime('%H:%M') }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </section>
+
+
+    <footer class="site-footer">
+      <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* Barra de Notificações */
+.notificacoes-bar {
+    position: fixed;
+    top: 60px; /* Ajuste conforme a altura do seu cabeçalho */
+    right: -320px; /* Inicialmente escondida fora da tela */
+    width: 300px;
+    height: auto;
+    max-height: 400px; /* Limita a altura */
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    overflow-y: auto; /* Permite rolagem se exceder a altura */
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.notificacoes-bar.active {
+    right: 20px; /* Exibe a barra ao ativar */
+}
+
+.notificacoes-bar h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.notificacoes-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notificacoes-bar ul li {
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+}
+
+.notificacoes-bar ul li:last-child {
+    border-bottom: none;
+}
+
+.icon-bell-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Estilização de uma notificação importante */
+.notificacoes-bar ul li.important {
+    font-weight: bold;
+    color: #d9534f; /* Vermelho para destaque */
+}
+
+.notification-link {
+    text-decoration: none;
+    color: inherit; /* Mantém a cor original do texto */
+    display: block;
+    padding: 10px;
+}
+
+.notification-link:hover {
+    background-color: #f0f0f0; /* Efeito de destaque ao passar o mouse */
+    cursor: pointer;
+    border-radius: 4px; /* Arredonda as bordas, deixando como um botão */
+}
+
+.notification-link strong {
+    color: #333; /* Define a cor do título da notificação */
+}
+
+.notification-link p {
+    color: #555; /* Define a cor do texto da notificação */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .notificacoes-bar {
+        width: 80%; /* Aumenta a largura para telas menores */
+        right: -100%; /* Inicialmente escondida */
+    }
+
+    .notificacoes-bar.active {
+        right: 10%; /* Exibe a barra ao ativar em telas menores */
+    }
+
+    .notificacoes-bar h2 {
+        font-size: 14px;
+    }
+
+    .notificacoes-bar ul li {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notificacoes-bar {
+        width: 100%; /* Usa 100% da largura da tela em dispositivos muito pequenos */
+        max-height: 300px; /* Ajusta a altura máxima para telas pequenas */
+        right: -100%; /* Inicialmente escondida */
+    }
+
+    .notificacoes-bar.active {
+        right: 0; /* Exibe a barra ao ativar em telas muito pequenas */
+    }
+
+    .notificacoes-bar h2 {
+        font-size: 12px;
+    }
+
+    .notificacoes-bar ul li {
+        font-size: 12px;
+    }
+}

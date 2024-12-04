@@ -1,0 +1,248 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.cadastro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-top: 80px;
+    padding-bottom: 50px;
+}
+
+.cadastro-box {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    text-align: center;
+}
+
+h2, h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.switch-label {
+    font-size: 16px;
+    color: #999;
+    margin: 0 10px;
+    font-weight: normal;
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.switch-container .selected {
+    color: #333;
+    font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin: 0 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2C3E50;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2C3E50;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2C3E50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Barra de Progresso */
+.progresso {
+    background-color: #ddd;
+    height: 8px;
+    border-radius: 4px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.barra-progresso {
+    background-color: #4CAF50;
+    height: 100%;
+    width: 0;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+/* Campos de entrada */
+.input-field {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Asterisco vermelho para campos obrigatórios */
+.required {
+    color: red;
+}
+
+/* Mensagens de feedback */
+.input-field small {
+    color: red;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Campos inválidos */
+.invalid {
+    border-color: red;
+}
+
+/* Botões de Navegação */
+.navegacao {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navegacao button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.navegacao button:hover {
+    background-color: #45a049;
+}
+
+.navegacao button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Ajuste específico para os botões na etapa final */
+#etapa3-pessoa .navegacao,
+#etapa3-empresa .navegacao {
+    justify-content: flex-start;
+}
+
+#etapa3-pessoa .navegacao button,
+#etapa3-empresa .navegacao button {
+    width: auto;
+    margin-right: 10px;
+}
+
+#etapa3-pessoa .navegacao .cadastro-btn,
+#etapa3-empresa .navegacao .cadastro-btn {
+    flex-grow: 1;
+}
+
+/* Botão de Cadastro */
+.cadastro-btn {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cadastro-btn:hover {
+    background-color: #45a049;
+}
+
+/* Termos e Condições */
+.termos {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.termos input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+    .cadastro-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .navegacao {
+        flex-direction: column;
+    }
+
+    .navegacao button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .navegacao button:last-child {
+        margin-bottom: 0;
+    }
+}

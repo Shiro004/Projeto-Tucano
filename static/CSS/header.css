@@ -1,0 +1,142 @@
+/* header.css */
+
+/* Estilos gerais para todos os cabeçalhos */
+.site-header {
+    height: 80px; /* Altura fixa */
+    background-color: #2C3E50;
+    color: #fff;
+    padding: 0 45px; /* Padding horizontal apenas */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  /* Estilos para o logo */
+  .site-header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-header .logo a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-header .logo img {
+    max-height: 60px;
+    width: auto;
+  }
+  
+  /* Estilos para a navegação */
+  .site-header nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .site-header nav a:hover {
+    color: #ddd;
+  }
+  
+  /* Estilos para os ícones do cabeçalho */
+  .site-header .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .site-header .icon-bell,
+  .site-header .profile-pic {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .site-header .profile-pic {
+    border-radius: 50%;
+  }
+  
+  /* Estilos específicos para o index.html (home-header) */
+  .home-header .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 40px;
+    margin-left: 20px;
+  }
+  
+  .home-header .search-bar input {
+    border: none;
+    padding: 8px 12px;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    height: 100%;
+  }
+  
+  .home-header .search-bar button {
+    background-color: #ffd700;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    height: 100%;
+  }
+  
+  .home-header .search-bar button img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Ajuste para distribuir espaço no cabeçalho da home */
+  .home-header {
+    justify-content: space-between;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .site-header {
+      height: auto; /* Permitir que o cabeçalho se ajuste em telas menores */
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .home-header .search-bar {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0;
+    }
+  
+    .site-header .header-icons {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .site-header .icon-bell,
+    .site-header .profile-pic {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .site-header nav a {
+      font-size: 14px;
+      margin: 0 5px;
+    }
+  }
+  

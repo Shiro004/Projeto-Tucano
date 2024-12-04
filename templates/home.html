@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Definindo o charset e a viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título da Página -->
+  <title>Tucano Trabalhos</title>
+
+  <!-- Importando os arquivos CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/rodape.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/painelnotificacoes.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+  <!-- Importando a fonte do Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Cabeçalho do site -->
+  <header class="site-header home-header">
+    <!-- Logo do site -->
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano" class="logo-image">
+      </a>
+    </div>
+
+    <!-- Navegação com links de Login e Cadastro -->
+    <div class="nav-links">
+        <nav>
+            <a id="login-link" href="{{ url_for('login') }}">Login</a>
+            <a id="cadastro-link" href="{{ url_for('cadastro') }}">Cadastro</a>
+        </nav>
+    </div> 
+    
+    <!-- Ícones de Notificações e Perfil -->
+    <div class="header-icons">
+      <a href="{{ url_for('login') }}">
+        <button id="notificacoes-btn" class="icon-bell-btn">
+            <img src="{{ url_for('static', filename='IMG/bell-icon.png') }}" alt="Notificações" class="icon-bell">
+        </button>
+      </a>
+      <!-- Ícone de perfil, que também redireciona para o login -->
+      <a href="{{ url_for('login') }}">
+        <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+      </a>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    <main>
+      <!-- Seção principal de destaque (Hero) -->
+      <section class="hero">
+        <div class="nav-bar">
+          <a href="{{ url_for('como_funciona') }}" class="btn-redirecionar">Como Funciona</a>
+          <a href="#" class="btn-redirecionar">Benefícios</a>
+          <a href="#">Quero trabalhar</a>
+        </div>
+        <!-- Título do site -->
+        <h1>
+          <span class="tucano">TUCANO</span><br>
+          <span class="trabalhos">TRABALHOS</span>
+        </h1>
+        <!-- Botão de chamada para ação (Buscar Trabalhos) -->
+        <a href="{{ url_for('busca') }}" id="buscar-trabalhos-btn" class="cta-button">Buscar Trabalhos</a>
+      </section>
+
+      <!-- Seção para cadastro -->
+      <section class="join-us">
+        <p>Junte-se a nós! <a href="{{ url_for('cadastro') }}">Cadastre-se</a>.</p>
+      </section>
+
+      <!-- Seção de características do site -->
+      <section class="features">
+        <!-- Cada "feature" destaca uma característica do serviço -->
+        <div class="feature">
+          <h3>Variedade de Oportunidades</h3>
+          <p>Oferecemos diversas oportunidades de trabalho, atualizadas regularmente, para diferentes setores e níveis de experiência. Encontre vagas ideais para o seu perfil e habilidades.</p>
+        </div>
+        <div class="feature">
+          <h3>Facilidade de Acesso</h3>
+          <p>Busque trabalhos próximos ou remotos de forma prática, filtrando por categoria, localização e tipo de trabalho, e aproveite as melhores oportunidades com facilidade.</p>
+        </div>
+        <div class="feature">
+          <h3>Sem Intermediários</h3>
+          <p>Conecte-se diretamente com os empregadores, permitindo uma comunicação rápida e transparente, sem intermediários, para negociações claras e seguras.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Rodapé do site -->
+  <footer class="site-footer">
+    <!-- Copyright -->
+    <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+    <!-- Links do rodapé -->
+    <div class="footer-links">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+    </div>
+  </footer>
+
+  <!-- Script para ajustar o espaçamento superior do conteúdo com base na altura do cabeçalho -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var headerHeight = document.querySelector('.site-header').offsetHeight;
+      document.querySelector('.main-content').style.paddingTop = headerHeight + 'px';
+    });
+  </script>
+</body>
+</html>

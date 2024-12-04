@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.area-usuario {
+    display: flex;
+    align-items: center;
+}
+
+.icone-notificacao, .icone-usuario {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.conteiner {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.caminho {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.visualizacao-oportunidade {
+    padding: 20px;
+}
+
+.entrada-detalhe {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Adicionar espaço entre os campos */
+}
+
+select.entrada-detalhe {
+    appearance: none; /* Remove a seta padrão do navegador */
+    background-color: white;
+    cursor: pointer;
+}
+
+
+.cabecalho-oportunidade {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cabecalho-oportunidade h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.botao-remover {
+    background: none;
+    color: red;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.detalhes-oportunidade {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detalhes-oportunidade label {
+    font-weight: bold;
+}
+
+.entrada-detalhe, .campo-descricao {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.campo-descricao {
+    height: 100px;
+    resize: none;
+}
+
+.chave-status {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.chave-status input {
+    display: none;
+}
+
+.controle-deslizante {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.controle-deslizante:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .controle-deslizante {
+    background-color: #2196F3;
+}
+
+input:checked + .controle-deslizante:before {
+    transform: translateX(14px);
+}
+
+.sugestoes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute; /* Permite posicionar abaixo do campo */
+    width: 100%; /* Igual à largura do campo */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.sugestoes li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sugestoes li:hover {
+    background-color: #f0f0f0;
+}
+
+.entrada-detalhe {
+    position: relative; /* Necessário para a lista de sugestões */
+}
+
+.botao-publicar {
+    width: 100%;
+    padding: 10px;
+    background-color: #001f3f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botao-publicar:hover {
+    background-color: #0056b3;
+}
+
+.botao-remover {
+    background-color: #ff4d4d; /* Vermelho claro */
+    color: white; /* Texto branco */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 15px; /* Espaçamento interno */
+    cursor: pointer; /* Muda o cursor para "mão" */
+    font-size: 14px; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Animação suave */
+}
+
+.botao-remover:hover {
+    background-color: #e60000; /* Vermelho mais escuro ao passar o mouse */
+}
+
+/* Checkbox de Status */
+
+.input-field label[for="status"] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.input-field #status {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.input-field label {
+    font-size: 14px;
+}

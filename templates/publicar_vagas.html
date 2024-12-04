@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar Projeto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/rodape.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/publicar-vagas.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/painelnotificacoes.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header class="site-header home-header">
+        <div class="logo">
+            <a href="{{ url_for('home_') }}">
+                <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano" class="logo-image">
+            </a>
+        </div>
+        <div class="header-icons">
+            <a href="{{ url_for('perfil') }}">
+                <img src="{{ url_for('static', filename='IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+            </a>
+        </div>        
+    </header>   
+
+    <main class="conteiner">
+        <div class="caminho">HOME > PÁGINA DE VISUALIZAÇÃO DAS OPORTUNIDADES</div>
+
+        <section class="visualizacao-oportunidade">
+            <div class="cabecalho-oportunidade">
+                <h1>PÁGINA DE PUBLICAÇÃO DAS OPORTUNIDADES</h1>
+            </div>
+            
+            <form id="formulario-publicacao" action="{{ url_for('publicar_vagas') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="tipo" value="Oportunidade">
+                
+                <!-- Passo 1: Dados da Oportunidade -->
+                <div class="etapa-publicacao" id="etapa1-publicacao">
+                    <h3>Dados da Oportunidade</h3>
+                    <div class="input-field">
+                        <label for="titulo"><strong>TÍTULO:</strong> <span class="required">*</span></label>
+                        <input type="text" id="titulo" name="titulo" class="entrada-detalhe" placeholder="Digite o título da oportunidade" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="descricao"><strong>DESCRIÇÃO:</strong> <span class="required">*</span></label>
+                        <textarea id="descricao" name="descricao" class="campo-descricao" placeholder="Descreva a oportunidade" required></textarea>
+                    </div>
+                    <div class="input-field">
+                        <label for="valor"><strong>VALOR:</strong> <span class="required">*</span></label>
+                        <input type="text" id="valor" name="valor" class="entrada-detalhe" placeholder="Digite o valor" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="local"><strong>LOCAL:</strong> <span class="required">*</span></label>
+                        <input type="text" id="local" name="local" class="entrada-detalhe" placeholder="Digite o local" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <label for="categoria"><strong>CATEGORIA:</strong> <span class="required">*</span></label>
+                        <select id="categoria" name="categoria" class="entrada-detalhe" required>
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            <option value="garcom">Garçom</option>
+                            <option value="motorista">Motorista</option>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="limpeza">Serviços de limpeza</option>
+                            <option value="cuidador">Cuidador</option>
+                            <option value="construcao">Construção civil</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="eventos">Eventos</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="dataInicio"><strong>DATA:</strong> <span class="required">*</span></label>
+                        de <input type="date" id="dataInicio" name="dataInicio" class="entrada-detalhe" required>
+                        até <input type="date" id="dataFim" name="dataFim" class="entrada-detalhe" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="horarioInicio"><strong>HORÁRIO:</strong> <span class="required">*</span></label>
+                        de <input type="time" id="horarioInicio" name="horarioInicio" class="entrada-detalhe" required>
+                        até <input type="time" id="horarioFim" name="horarioFim" class="entrada-detalhe" required>
+                    </div>
+                    
+                    <!-- Botão de Publicação -->
+                    <div class="navegacao">
+                        <button type="submit" class="botao-publicar">PUBLICAR</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='JS/publicar-vagas.js') }}"></script>
+</body>
+</html>

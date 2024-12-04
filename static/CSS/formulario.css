@@ -1,0 +1,68 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Ajuste para o conteúdo principal */
+.main-content {
+  padding-top: 80px; /* Mesmo valor da altura do cabeçalho */
+}
+
+/* Estilos para o login */
+.login-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.login-box {
+  background-color: #f5f5f5;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2C3E50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #1A252F;
+}
+
+/* Estilos adicionais conforme necessário */

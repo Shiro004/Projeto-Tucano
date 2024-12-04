@@ -1,0 +1,61 @@
+/* Rodapé */
+.site-footer {
+    background-color: #2C3E50;
+    color: #fff;
+    padding: 8px 15px;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 13px;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+.site-footer .footer-links {
+    margin-top: 5px;
+}
+
+.site-footer .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 13px;
+}
+
+.site-footer .footer-links a:hover {
+    color: #ddd;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .site-footer {
+        font-size: 12px; /* Reduz o tamanho da fonte em telas menores */
+        padding: 10px; /* Ajusta o padding para telas pequenas */
+    }
+
+    .site-footer .footer-links {
+        display: flex;
+        flex-direction: column; /* Alinha links em coluna em telas menores */
+        align-items: center; /* Centraliza os links */
+        margin-top: 10px;
+    }
+
+    .site-footer .footer-links a {
+        margin: 5px 0; /* Margem vertical entre links em telas pequenas */
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        font-size: 11px; /* Fonte menor para dispositivos muito pequenos */
+        padding: 12px 8px; /* Reduz o padding lateral */
+    }
+
+    .site-footer p, .site-footer .footer-links {
+        line-height: 1.2; /* Ajusta o espaçamento entre linhas para telas pequenas */
+    }
+}

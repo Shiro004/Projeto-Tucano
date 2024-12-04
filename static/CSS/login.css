@@ -1,0 +1,132 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    min-height: 100vh; /* Altura total da tela */
+}
+
+/* Conteúdo Principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Permite que o formulário ocupe o espaço restante */
+    padding-top: 120px; /* Espaço para evitar o cabeçalho fixo */
+    padding-bottom: 60px; /* Espaço para evitar o rodapé fixo */
+}
+
+/* Estilos do formulário de login */
+.login-box {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 420px;
+}
+
+@media (max-width: 500px) {
+    .login-box {
+        width: 90%;
+    }
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* Botões de login social */
+.social-login button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+    color: white;
+}
+
+.google-btn {
+    background-color: #db4a39;
+    color: white;
+}
+
+.social-login button:hover {
+    opacity: 0.9;
+}
+
+/* Campos de entrada */
+.input-field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-field label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-color: #aaa;
+}
+
+/* Feedback visual de erro para campos */
+.error {
+    border: 1px solid #ff4d4d;
+}
+
+/* Estilos para o checkbox de "Manter Conectado" */
+.remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.remember-me input {
+    margin-right: 10px;
+}
+
+/* Botão de envio do formulário */
+.login-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+.login-btn[disabled] {
+    background-color: #999;
+    cursor: not-allowed;
+}

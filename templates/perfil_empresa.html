@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Empresa - Freelancers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/perfil_empresa.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/rodape.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/painelnotificacoes.css') }}">
+</head>
+<body>
+    <header class="site-header home-header">
+        <div class="logo">
+            <a href="{{ url_for('home_') }}">
+                <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano">
+            </a>
+        </div>
+        <div class="header-icons">
+            <button id="notificacoes-btn" class="icon-bell-btn">
+                <img src="{{ url_for('static', filename='IMG/bell-icon.png') }}" alt="Notificações" class="icon-bell">
+            </button>
+            <img src="{{ url_for('static', filename='IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-body">
+            <!-- Painel Esquerdo -->
+            <div class="left-panel">
+                <h3 class="panel-title">Perfil da Empresa</h3>
+                <div class="profile-info">
+                    <div class="profile-photo">
+                        <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+                    </div>
+                    <div class="profile-details">
+                        <p><strong>Nome:</strong> {{ empresa.razao_social }}</p>
+                        <p><strong>CNPJ:</strong> {{ empresa.cnpj }}</p>
+                        <p><strong>Localização:</strong> {{ empresa.localizacao }}</p>
+                        <p><strong>Porte:</strong> {{ empresa.porte }}</p>
+                        <p><strong>Website:</strong> <a href="{{ empresa.website }}" target="_blank">{{ empresa.website }}</a></p>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="action-button">Editar Perfil</button>
+                    <button class="action-button">Editar Senha</button>
+                    <button class="action-button">Editar Email</button>
+                    <a href="{{ url_for('logout') }}" class="action-button logout-button">Sair da Conta</a>
+                </div>
+            </div>
+
+            <!-- Painel Direito -->
+            <div class="right-panel">
+                <div class="box">
+                    <h3 class="panel-title">Oportunidades Publicadas</h3>
+                    {% if empresa.oportunidades %}
+                        <ul>
+                            {% for vaga in empresa.oportunidades %}
+                                <li>
+                                    <p><strong>{{ vaga.titulo }}</strong></p>
+                                    <p>{{ vaga.descricao }}</p>
+                                    <p>Status: 
+                                        <span class="{{ 'active' if vaga.status else 'inactive' }}">
+                                            {{ 'ON' if vaga.status else 'OFF' }}
+                                        </span>
+                                    </p>
+                                    <form action="{{ url_for('atualizar_status_oportunidade', oportunidade_id=vaga.oportunidade_id) }}" method="POST">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="tipo" value="Pessoa">
+                                        <button type="submit" class="action-button">
+                                            {{ 'Desativar' if vaga.status else 'Ativar' }}
+                                        </button>
+                                    </form>                                
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Você ainda não criou vagas.</p>
+                    {% endif %}
+                    <a href="{{ url_for('publicar_vagas') }}">
+                        <button class="action-button create-job-button">Criar Nova Vaga</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+        </div>
+    </footer>
+</body>
+</html>

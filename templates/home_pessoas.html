@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tucano Trabalhos</title>
+  <!-- Importando o CSS do cabeçalho unificado -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/rodape.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/painelnotificacoes.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Cabeçalho com classe específica -->
+  <header class="site-header home-header">
+    <div class="logo">
+      <a href="{{ url_for('home_') }}">
+        <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano" class="logo-image">
+      </a>
+    </div>
+    <div class="header-icons">
+        <button id="notificacoes-btn" class="icon-bell-btn">
+            <img src="{{ url_for('static', filename='IMG/bell-icon.png') }}" alt="Notificações" class="icon-bell">
+        </button>
+        <!-- Barra de Notificações -->
+        <div id="notificacoes-bar" class="notificacoes-bar">
+            <h2>Notificações</h2>
+            <ul>
+                <li>
+                    <a href="{{ url_for('notificacoes') }}" class="notification-link">
+                        <strong>Nova Vaga: Serviço de Garçom</strong>
+                        <p>Empresa Italian Food está à procura de um garçom.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('notificacoes') }}" class="notification-link">
+                        <strong>Nova Vaga: Assistente de Vendas</strong>
+                        <p>Empresa Microsoft está contratando um Assistente de Vendas.</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Envolvendo o ícone do perfil com a tag <a> para redirecionar -->
+        <a href="{{ url_for('perfil') }}">
+            <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+        </a>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    <main>
+      <!-- Seu conteúdo principal começa aqui -->
+      <section class="hero">
+        <div class="nav-bar">
+          <a href="{{ url_for('como_funciona_logado') }}" class="btn-redirecionar">Como Funciona</a>
+          <a href="#" class="btn-redirecionar">Exemplo</a>
+          <a href="#">Quero trabalhar</a>
+      </div>
+        <h1>
+          <span class="tucano">TUCANO</span><br>
+          <span class="trabalhos">TRABALHOS</span>
+        </h1>
+        <a href="{{ url_for('busca_logado') }}" id="buscar-trabalhos-btn" class="cta-button">Buscar Trabalhos</a>
+      </section>
+      <section class="join-us">
+        <p>Junte-se a nós!</p>
+      </section>
+      <section class="features">
+        <div class="feature">
+          <h3>Variedade de Oportunidades</h3>
+          <p>Oferecemos diversas oportunidades de trabalho, atualizadas regularmente, para diferentes setores e níveis de experiência. Encontre vagas ideais para o seu perfil e habilidades.</p>
+      </div>
+      <div class="feature">
+          <h3>Facilidade de Acesso</h3>
+          <p>Busque trabalhos próximos ou remotos de forma prática, filtrando por categoria, localização e tipo de trabalho, e aproveite as melhores oportunidades com facilidade.</p>
+      </div>
+      <div class="feature">
+          <h3>Sem Intermediários</h3>
+          <p>Conecte-se diretamente com os empregadores, permitindo uma comunicação rápida e transparente, sem intermediários, para negociações claras e seguras.</p>
+      </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='JS/painelnotificacoes.js') }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var headerHeight = document.querySelector('.site-header').offsetHeight;
+      document.querySelector('.main-content').style.paddingTop = headerHeight + 'px';
+    });
+  </script>
+</body>
+</html>

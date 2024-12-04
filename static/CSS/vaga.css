@@ -1,0 +1,252 @@
+/* Estilo Geral */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contêiner Principal */
+.job-container {
+    max-width: 1200px; /* Largura máxima */
+    margin: 100px auto 29px auto; /* Centraliza e ajusta o espaço superior */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Organização interna */
+    flex-wrap: wrap;
+    gap: 15px; /* Reduzindo espaço entre os elementos */
+    padding: 15px; /* Reduzindo padding interno */
+    box-sizing: border-box; /* Garante que padding não ultrapasse a largura */
+    min-height: calc(100vh - 180px); /* Altura mínima ajustada */
+}
+
+/* Cabeçalho da Vaga */
+.job-header {
+    flex-basis: 100%; /* O cabeçalho ocupa a linha inteira */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.job-header h1 {
+    font-size: 24px;
+    color: #007BFF;
+    margin-bottom: 3px;
+}
+
+.job-header p {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Colunas Principais */
+.job-main,
+.job-info {
+    flex: 1; /* Cada seção ocupa metade do espaço */
+    min-width: 300px; /* Largura mínima */
+}
+
+/* Descrição Principal */
+.job-main h2, .job-main h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.job-main ul {
+    list-style: disc;
+    padding-left: 15px;
+    margin-bottom: 5px;
+}
+
+.job-main ul li {
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+/* Informações Adicionais */
+.job-info {
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.job-info h2 {
+    margin-bottom: 10px;
+    color: #007BFF;
+    font-size: 18px;
+}
+
+.job-info p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Mapa */
+.job-map {
+    flex-basis: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.job-map h2 {
+    margin-bottom: 5px;
+    text-align: left;
+    padding-left: 5%;
+    color: #007BFF;
+    font-size: 18px;
+}
+
+.job-map iframe {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 90%;
+    height: 150px;
+    margin: 5px auto;
+    display: block;
+}
+
+/* Botões */
+.job-actions {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.job-actions button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.job-actions button:hover {
+    background-color: #0056b3;
+}
+
+.apply-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .job-container {
+        max-width: 90%; /* Ajusta a largura do contêiner */
+        gap: 10px; /* Reduz o espaçamento entre os elementos */
+    }
+
+    .job-header h1 {
+        font-size: 20px; /* Reduz o tamanho da fonte */
+    }
+
+    .job-header p {
+        font-size: 11px;
+    }
+
+    .job-main,
+    .job-info {
+        min-width: 100%; /* Ajusta para ocuparem a largura total */
+        flex-basis: 100%;
+    }
+
+    .job-map iframe {
+        width: 100%; /* Ajusta o mapa para ocupar toda a largura */
+        height: 150px; /* Mantém altura menor */
+    }
+
+    .job-actions button {
+        font-size: 12px;
+        padding: 6px 10px; /* Reduz o tamanho dos botões */
+    }
+}
+
+@media (max-width: 768px) {
+    .job-container {
+        max-width: 95%;
+        padding: 10px; /* Reduz padding interno */
+    }
+
+    .job-header h1 {
+        font-size: 18px; /* Diminui tamanho do título */
+    }
+
+    .job-main h2,
+    .job-main h3,
+    .job-info h2 {
+        font-size: 16px; /* Reduz o tamanho das fontes */
+    }
+
+    .job-main ul li,
+    .job-info p {
+        font-size: 12px;
+    }
+
+    .job-actions button {
+        font-size: 10px; /* Diminui fonte */
+        padding: 5px 8px; /* Compacta os botões */
+    }
+
+    .job-map iframe {
+        height: 120px; /* Diminui altura do mapa */
+    }
+}
+
+@media (max-width: 480px) {
+    .job-header h1 {
+        font-size: 16px;
+    }
+
+    .job-header p {
+        font-size: 10px;
+    }
+
+    .job-main ul li {
+        font-size: 10px; /* Reduz fonte para dispositivos menores */
+    }
+
+    .job-actions button {
+        font-size: 9px;
+        padding: 4px 6px; /* Ajusta os botões ainda mais compactos */
+    }
+
+    .job-map iframe {
+        height: 100px; /* Reduz a altura do mapa */
+    }
+}
+
+.btn-secondary {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  

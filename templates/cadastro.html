@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Portal de Trabalhos Informais</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/rodape.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/cadastro.css') }}">
+    <!-- Fonte -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"></noscript>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano" class="logo-image">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+    </header>
+
+        <!-- Container de Cadastro -->
+        <main class="cadastro-container">
+            <div class="cadastro-box">
+                <h2>Cadastro</h2>
+    
+                <!-- Botão Switch para Alternar entre Pessoa e Empresa -->
+                <div class="switch-container">
+                    <span id="pessoa-texto" class="switch-label selected">Pessoa</span>
+                    <label class="switch">
+                        <input type="checkbox" id="tipo-switch">
+                        <span class="slider"></span>
+                    </label>
+                    <span id="empresa-texto" class="switch-label">Empresa</span>
+                </div>
+    
+                <!-- Formulário de Cadastro para Pessoa -->
+                <section id="form-pessoa">
+                    <div class="progresso">
+                        <div class="barra-progresso" id="barra-progresso-pessoa"></div>
+                    </div>
+                    <form id="cadastroFormPessoa" action="{{ url_for('cadastro') }}" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="tipo" value="Pessoa">
+                        <!-- Passo 1: Dados Básicos -->
+                        <div class="etapa-pessoa" id="etapa1-pessoa">
+                            <h3>Dados Básicos</h3>
+                            <div class="input-field">
+                                <label for="nome-pessoa">Nome Completo <span class="required">*</span></label>
+                                <input type="text" id="nome-pessoa" name="nome-pessoa" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="email-pessoa">Email <span class="required">*</span></label>
+                                <input type="email" id="email-pessoa" name="email-pessoa" placeholder="Digite seu email" required>
+                                <small id="email-feedback-pessoa"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="senha-pessoa">Senha <span class="required">*</span></label>
+                                <input type="password" id="senha-pessoa" name="senha-pessoa" placeholder="Digite sua senha" required>
+                            </div>
+                            <!-- Botão Próximo -->
+                            <div class="navegacao">
+                                <button type="button" id="proximoBtnPessoa">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- Passo 2: Informações Profissionais -->
+                        <div class="etapa-pessoa" id="etapa2-pessoa" style="display: none;">
+                            <h3>Informações Profissionais</h3>
+
+                            <!-- Campos específicos para Pessoa -->
+                            <div class="input-field">
+                                <label for="cpf">CPF <span class="required">*</span></label>
+                                <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+                                <small id="cpf-feedback"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="telefone-pessoa">Telefone <span class="required">*</span></label>
+                                <input type="tel" id="telefone-pessoa" name="telefone-pessoa" placeholder="Digite seu telefone" required>
+                                <small id="telefone-feedback-pessoa"></small>
+                            </div>
+                            <!-- Campos de endereço da pessoa -->
+                            <div class="input-field">
+                                <label for="cep-pessoa">CEP <span class="required">*</span></label>
+                                <input type="text" id="cep-pessoa" name="cep-pessoa" placeholder="Digite o CEP" required>
+                                <small id="cep-feedback-pessoa"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="endereco-pessoa">Endereço <span class="required">*</span></label>
+                                <input type="text" id="endereco-pessoa" name="endereco-pessoa" placeholder="Endereço" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="numero-pessoa">Número <span class="required">*</span></label>
+                                <input type="text" id="numero-pessoa" name="numero-pessoa" placeholder="Número" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="complemento-pessoa">Complemento (Opcional)</label>
+                                <input type="text" id="complemento-pessoa" name="complemento-pessoa" placeholder="Complemento">
+                            </div>
+                            <div class="input-field">
+                                <label for="bairro-pessoa">Bairro <span class="required">*</span></label>
+                                <input type="text" id="bairro-pessoa" name="bairro-pessoa" placeholder="Bairro" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="cidade-pessoa">Cidade <span class="required">*</span></label>
+                                <input type="text" id="cidade-pessoa" name="cidade-pessoa" placeholder="Cidade" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="estado-pessoa">Estado <span class="required">*</span></label>
+                                <input type="text" id="estado-pessoa" name="estado-pessoa" placeholder="Estado" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="disponibilidade">Disponibilidade de Horário <span class="required">*</span></label>
+                                <select id="disponibilidade" name="disponibilidade" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="Horário Comercial">Horário Comercial</option>
+                                    <option value="Horário Noturno">Horário Noturno</option>
+                                    <option value="Horário Flexível">Horário Flexível</option>
+                                    <option value="Finais de Semana">Finais de Semana</option>
+                                </select>
+                            </div>
+
+                            <!-- Botões Anterior e Próximo -->
+                            <div class="navegacao">
+                                <button type="button" id="anteriorBtnPessoa">Anterior</button>
+                                <button type="button" id="proximoBtn2Pessoa">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- Passo 3: Finalização -->
+                        <div class="etapa-pessoa" id="etapa3-pessoa" style="display: none;">
+                            <h3>Finalizar Cadastro</h3>
+                            <p>Revise suas informações antes de concluir o cadastro.</p>
+                            <div id="resumo-cadastro-pessoa"></div>
+                            <div class="termos">
+                                <input type="checkbox" id="aceitar-termos-pessoa" required>
+                                <label for="aceitar-termos-pessoa">Concordo com os Termos de Uso e a Política de Privacidade. <span class="required">*</span></label>
+                            </div>
+                            <!-- Botões Anterior e Finalizar -->
+                            <div class="navegacao">
+                                <button type="button" id="anteriorBtn2Pessoa">Anterior</button>
+                                <button type="submit" class="cadastro-btn">Finalizar Cadastro</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+    
+                <!-- Formulário de Cadastro para Empresa -->
+                <section id="form-empresa" style="display: none;">
+                    <div class="progresso">
+                        <div class="barra-progresso" id="barra-progresso-empresa"></div>
+                    </div>
+                    <form id="cadastroFormEmpresa" action="{{ url_for('cadastro') }}" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="tipo" value="Empresa">
+                        <!-- Passo 1: Dados Básicos -->
+                        <div class="etapa-empresa" id="etapa1-empresa">
+                            <h3>Dados Básicos</h3>
+                            <div class="input-field">
+                                <label for="razao-social">Razão Social <span class="required">*</span></label>
+                                <input type="text" id="razao-social" name="razao-social" placeholder="Digite a razão social" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="email-empresa">Email <span class="required">*</span></label>
+                                <input type="email" id="email-empresa" name="email-empresa" placeholder="Digite o email" required>
+                                <small id="email-feedback-empresa"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="senha-empresa">Senha <span class="required">*</span></label>
+                                <input type="password" id="senha-empresa" name="senha-empresa" placeholder="Digite a senha" required>
+                            </div>
+                            <!-- Botão Próximo -->
+                            <div class="navegacao">
+                                <button type="button" id="proximoBtnEmpresa">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- Passo 2: Informações da Empresa -->
+                        <div class="etapa-empresa" id="etapa2-empresa" style="display: none;">
+                            <h3>Informações da Empresa</h3>
+
+                            <!-- Campos específicos para Empresa -->
+                            <div class="input-field">
+                                <label for="cnpj">CNPJ <span class="required">*</span></label>
+                                <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required>
+                                <small id="cnpj-feedback"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="porte">Porte da Empresa <span class="required">*</span></label>
+                                <input type="text" id="porte" name="porte" placeholder="Ex: Pequena, Média, Grande" required>
+                            </div>
+                            <!-- Campos de endereço da empresa -->
+                            <div class="input-field">
+                                <label for="cep-empresa">CEP <span class="required">*</span></label>
+                                <input type="text" id="cep-empresa" name="cep-empresa" placeholder="Digite o CEP" required>
+                                <small id="cep-feedback-empresa"></small>
+                            </div>
+                            <div class="input-field">
+                                <label for="endereco-empresa">Endereço <span class="required">*</span></label>
+                                <input type="text" id="endereco-empresa" name="endereco-empresa" placeholder="Endereço" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="numero-empresa">Número <span class="required">*</span></label>
+                                <input type="text" id="numero-empresa" name="numero-empresa" placeholder="Número" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="complemento-empresa">Complemento (Opcional)</label>
+                                <input type="text" id="complemento-empresa" name="complemento-empresa" placeholder="Complemento">
+                            </div>
+                            <div class="input-field">
+                                <label for="bairro-empresa">Bairro <span class="required">*</span></label>
+                                <input type="text" id="bairro-empresa" name="bairro-empresa" placeholder="Bairro" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="cidade-empresa">Cidade <span class="required">*</span></label>
+                                <input type="text" id="cidade-empresa" name="cidade-empresa" placeholder="Cidade" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="estado-empresa">Estado <span class="required">*</span></label>
+                                <input type="text" id="estado-empresa" name="estado-empresa" placeholder="Estado" required>
+                            </div>
+                            <div class="input-field">
+                                <label for="website">Website da Empresa</label>
+                                <input type="url" id="website" name="website" placeholder="URL do site da empresa">
+                            </div>
+
+                            <!-- Botões Anterior e Próximo -->
+                            <div class="navegacao">
+                                <button type="button" id="anteriorBtnEmpresa">Anterior</button>
+                                <button type="button" id="proximoBtn2Empresa">Próximo</button>
+                            </div>
+                        </div>
+
+                        <!-- Passo 3: Finalização -->
+                        <div class="etapa-empresa" id="etapa3-empresa" style="display: none;">
+                            <h3>Finalizar Cadastro</h3>
+                            <p>Revise suas informações antes de concluir o cadastro.</p>
+                            <div id="resumo-cadastro-empresa"></div>
+                            <div class="termos">
+                                <input type="checkbox" id="aceitar-termos-empresa" required>
+                                <label for="aceitar-termos-empresa">Concordo com os Termos de Uso e a Política de Privacidade. <span class="required">*</span></label>
+                            </div>
+                            <!-- Botões Anterior e Finalizar -->
+                            <div class="navegacao">
+                                <button type="button" id="anteriorBtn2Empresa">Anterior</button>
+                                <button type="submit" class="cadastro-btn">Finalizar Cadastro</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+
+    <!-- Rodapé -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+        </div>
+    </footer>
+
+    <script>
+        // Atualizar o valor do campo 'tipo' com base no switch
+        const tipoSwitch = document.getElementById('tipo-switch');
+        const tipoPessoa = document.querySelector('#form-pessoa input[name="tipo"]');
+        const tipoEmpresa = document.querySelector('#form-empresa input[name="tipo"]');
+    
+        tipoSwitch.addEventListener('change', () => {
+            if (tipoSwitch.checked) {
+                // Selecionado Empresa
+                tipoPessoa.value = 'Empresa';
+                tipoEmpresa.value = 'Empresa';
+            } else {
+                // Selecionado Pessoa
+                tipoPessoa.value = 'Pessoa';
+                tipoEmpresa.value = 'Pessoa';
+            }
+        });
+    </script>
+
+    <script>
+        const loginUrl = "{{ url_for('login') }}";
+    </script>
+
+    <script src="{{ url_for('static', filename='JS/cadastro.js') }}"></script>
+</body>
+</html>

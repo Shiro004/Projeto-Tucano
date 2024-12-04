@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Freelancers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/perfil_empresa.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/rodape.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/painelnotificacoes.css') }}">
+</head>
+<body>
+    <header class="site-header home-header">
+        <div class="logo">
+            <a href="{{ url_for('home_') }}">
+                <img src="{{ url_for('static', filename='IMG/logo.png') }}" alt="Logo Tucano">
+            </a>
+        </div>
+        <div class="header-icons">
+            <a href="{{ url_for('notificacoes') }}">
+                <button id="notificacoes-btn" class="icon-bell-btn">
+                    <img src="{{ url_for('static', filename='IMG/bell-icon.png') }}" alt="Notificações" class="icon-bell">
+                </button>
+            </a>   
+            <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-body">
+            <!-- Painel Esquerdo -->
+            <div class="left-panel">
+                <h3 class="panel-title">Meu Perfil</h3>
+                <div class="profile-info">
+                    <div class="profile-photo">
+                        <img id="user-icon" src="{{ url_for('static', filename='/IMG/profile-pic.png') }}" alt="Perfil" class="profile-pic">
+                    </div>
+                    <div class="profile-details">
+                        <p><strong>Nome:</strong> {{ pessoa.nome if usuario.tipo == 'Pessoa' else empresa.razao_social }}</p>
+                        <p><strong>Email:</strong> {{ usuario.email }}</p>
+                        <p><strong>Tipo:</strong> {{ usuario.tipo }}</p> <!-- Exibe 'Pessoa' ou 'Empresa' -->
+                        <p><strong>Data de Cadastro:</strong> {{ usuario.data_cadastro }}</p>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="action-button">Editar Perfil</button>
+                    <button class="action-button">Editar Senha</button>
+                    <button class="action-button">Editar Email</button>
+                    <a href="{{ url_for('logout') }}" class="action-button logout-button">Sair da Conta</a>
+                </div>
+            </div>
+
+            <!-- Painel Direito -->
+            <div class="right-panel">
+                <div class="box">
+                    <h3 class="panel-title">Meus Projetos</h3>
+                    <p>Nenhum projeto foi encontrado. <a href="#">Buscar Projetos.</a></p>
+                </div>
+                <div class="box">
+                    <h3 class="panel-title">Minhas Propostas</h3>
+                    <p>Nenhuma proposta foi encontrada. <a href="#">Buscar Propostas.</a></p>
+                </div>
+                <div class="box">
+                    <h3 class="panel-title">Minhas Metas</h3>
+                    <ul class="goals-list">
+                        <li>
+                            <p>Concluir 5 projetos este mês</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%;"></div>
+                            </div>
+                            <p class="goal-status">0% concluído</p>
+                        </li>
+                        <li>
+                            <p>Ganhar R$1000 em projetos</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%;"></div>
+                            </div>
+                            <p class="goal-status">0% concluído</p>
+                        </li>
+                        <li>
+                            <p>Aumentar perfil para 100%</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 0%;"></div>
+                            </div>
+                            <p class="goal-status">0% concluído</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Tucano. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+        </div>
+    </footer>
+</body>
+</html>
